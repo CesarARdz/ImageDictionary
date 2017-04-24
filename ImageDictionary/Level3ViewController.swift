@@ -11,8 +11,8 @@ import UIKit
 class Level3ViewController: UIViewController {
     
     @IBOutlet weak var subCategoriesCollectionView: UICollectionView!
-    var images = [UIImage(named: "baking_tray"), UIImage(named: "blender"), UIImage(named: "bread_knife"), UIImage(named: "can_opener"), UIImage(named: "cleaver"), UIImage(named: "coffee_machine"), UIImage(named: "colander"), UIImage(named: "cooking_pot"), UIImage(named: "frying_pan"),UIImage(named: "garlic_press"), UIImage(named: "greater"), UIImage(named: "knife"), UIImage(named: "ladle"), UIImage(named: "lid"), UIImage(named: "masher"), UIImage(named: "muffin_tray"), UIImage(named: "oven"), UIImage(named: "piping_bag"), UIImage(named: "rolling_pin"), UIImage(named: "sieve"), UIImage(named: "spatula"), UIImage(named: "stoove"), UIImage(named: "toaster"), UIImage(named: "whisk")]
-    var names = ["Baking Tray", "Blender", "Bread Knife", "Can Opener", "Cleaver", "Coffee Machine", "Colander", "Cooking Pot", "Frying Pan", "Garlic Press", "Greater", "Knife", "Ladle", "Lid", "Masher", "Muffin Tray", "Oven", "Piping Bag", "Rolling Pin", "Sieve", "Spatula", "Stoove", "Toaster", "Whisk"]
+    var images = [UIImage(named: "baking_tray"), UIImage(named: "blender"), UIImage(named: "bread_knife"), UIImage(named: "can_opener"), UIImage(named: "cleaver"), UIImage(named: "coffee_machine"), UIImage(named: "colander"), UIImage(named: "cooking_pot"), UIImage(named: "extractor"),UIImage(named: "food_mixer"), UIImage(named: "food_processor"), UIImage(named: "fridge_shelf"), UIImage(named: "fridge"), UIImage(named: "frying_pan"), UIImage(named: "garlic press"), UIImage(named: "greater"), UIImage(named: "kettle"), UIImage(named: "knife"), UIImage(named: "ladle"), UIImage(named: "lid"), UIImage(named: "masher"), UIImage(named: "microwave"), UIImage(named: "muffin_tray"), UIImage(named: "orange_squeezer"), UIImage(named: "oven"), UIImage(named: "piping_bag"), UIImage(named: "rolling_pin"), UIImage(named: "shelves"), UIImage(named: "sieve"), UIImage(named: "sink"), UIImage(named: "spatula"), UIImage(named: "spice_rack"), UIImage(named: "stoove"), UIImage(named: "tap"), UIImage(named: "toaster"), UIImage(named: "whisk"), UIImage(named: "worktop")]
+    var names = ["baking_tray", "blender", "bread_knife", "can_opener", "cleaver", "coffee_machine", "colander", "cooking_pot", "extractor", "food_mixer", "food_processor", "fridge_shelf", "fridge", "frying_pan", "garlic press", "greater", "kettle", "knife", "ladle", "lid", "masher", "microwave", "muffin_tray", "orange_squeezer", "oven", "piping_bag", "rolling_pin", "shelves", "sieve", "sink", "spatula", "spice_rack", "stoove", "tap", "toaster", "whisk", "worktop"]
     let preferences = UserDefaults.standard
 
     override func viewDidLoad() {
@@ -44,10 +44,10 @@ class Level3ViewController: UIViewController {
 extension Level3ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        /*preferences.set(indexPath.row, forKey: "selectedCategorie")
+        preferences.set(indexPath.row, forKey: "selectedItem")
          let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-         let newViewController = storyBoard.instantiateViewController(withIdentifier: "categoriesView") as! CategoriesViewController
-         self.present(newViewController, animated: true, completion: nil)*/
+         let newViewController = storyBoard.instantiateViewController(withIdentifier: "level4View") as! Level4ViewController
+         self.present(newViewController, animated: true, completion: nil)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

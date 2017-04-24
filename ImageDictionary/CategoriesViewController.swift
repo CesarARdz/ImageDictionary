@@ -11,8 +11,8 @@ import UIKit
 class CategoriesViewController: UIViewController {
     
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
-    var images = [UIImage(named: "study"), UIImage(named: "laundry_room"), UIImage(named: "sitting_room"), UIImage(named: "balcony"), UIImage(named: "garage"), UIImage(named: "garden"), UIImage(named: "backyard"), UIImage(named: "attic"), UIImage(named: "kids_room"),UIImage(named: "cellar"), UIImage(named: "house_decoration"), UIImage(named: "house_installations")]
-    var names = ["Study","Laundry Room","Sitting Room","Balcony","Garage","Garden","Backyard","Attic","Kids Room","Cellar", "House Decoration","House Installations"]
+    var images = [UIImage(named: "attic"), UIImage(named: "backyard"), UIImage(named: "balcony"), UIImage(named: "bathroom"), UIImage(named: "bedroom"), UIImage(named: "cellar"), UIImage(named: "dining_room"), UIImage(named: "garage"), UIImage(named: "garden"),UIImage(named: "home_office"), UIImage(named: "house decoration"), UIImage(named: "house installations"), UIImage(named: "kids_room"), UIImage(named: "kitchen"),UIImage(named: "laundry_room"), UIImage(named: "living_room"), UIImage(named: "sitting_room")]
+    var names = ["Attic", "Backyard", "Balcony", "Bathroom", "Bedroom", "Cellar", "Dining room", "Garage", "Garden", "Home office", "House decoration", "House installations", "Kids room", "Kitchen", "Laundry room", "Living room", "Sitting room"]
     let preferences = UserDefaults.standard
 
     override func viewDidLoad() {
@@ -44,9 +44,11 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //preferences.set(indexPath.row, forKey: "selectedCategorie")
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "subCategoriesView") as! Level3ViewController
-        self.present(newViewController, animated: true, completion: nil)
+        if indexPath.row == 13 {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "subCategoriesView") as! Level3ViewController
+            self.present(newViewController, animated: true, completion: nil)
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

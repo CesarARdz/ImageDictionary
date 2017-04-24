@@ -39,10 +39,12 @@ class MainMenuViewController: UIViewController {
 extension MainMenuViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        preferences.set(indexPath.row, forKey: "selectedCategorie")
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "categoriesView") as! CategoriesViewController
-        self.present(newViewController, animated: true, completion: nil)
+        if indexPath.row == 5 {
+            preferences.set(indexPath.row, forKey: "selectedCategorie")
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "categoriesView") as! CategoriesViewController
+            self.present(newViewController, animated: true, completion: nil)
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
