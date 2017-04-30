@@ -15,6 +15,8 @@ class Level4ViewController: UIViewController {
     var utterance: AVSpeechUtterance!
     var translateShowed: Bool!
     var letterCount = 0;
+    var containerView: UIView!
+    var resultsView: UIView!
     var resultsLettersArray: NSMutableArray = []
 
     override func viewDidLoad() {
@@ -106,11 +108,11 @@ class Level4ViewController: UIViewController {
             //let currentWord = "BREAD KNIFE".components(separatedBy: " ")
             let currentWordArray = Array("BREAD KNIFE".characters)
             var count = 0;
-            let containerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat(currentWordArray.count*80), height: 50))
-            containerView.center = CGPoint(x: self.view.frame.size.width*0.5, y: self.view.frame.size.height*0.65)
+            self.containerView = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat(currentWordArray.count*80), height: 50))
+            self.containerView.center = CGPoint(x: self.view.frame.size.width*0.5, y: self.view.frame.size.height*0.65)
             
-            let resultsView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat(currentWordArray.count*100), height: self.view.frame.size.height*0.15))
-            resultsView.center = CGPoint(x: self.view.frame.size.width*0.5, y: self.view.frame.size.height*0.8)
+            self.resultsView = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat(currentWordArray.count*100), height: self.view.frame.size.height*0.15))
+            self.resultsView.center = CGPoint(x: self.view.frame.size.width*0.5, y: self.view.frame.size.height*0.8)
             
             for letter in currentWordArray {
                 let currentLetter: UIButton = UIButton(frame: CGRect(x: 80*count, y: 0, width: 50, height: 50))
@@ -120,54 +122,21 @@ class Level4ViewController: UIViewController {
                 currentLetter.layer.borderWidth = 1.0
                 currentLetter.tag = count
                 phoneticsBtn.addTarget(self, action: #selector(self.letterAction), for: .touchUpInside)
-                containerView.addSubview(currentLetter)
+                self.containerView.addSubview(currentLetter)
                 
                 currentLetter.isHidden = true
-                resultsView.addSubview(currentLetter)
+                self.resultsView.addSubview(currentLetter)
                 self.resultsLettersArray.add(currentLetter)
                 
                 count += 1
             }
-            containerView.isHidden = true
-            self.view.addSubview(containerView)
+            self.containerView.isHidden = true
+            self.view.addSubview(self.containerView)
             //containerView.backgroundColor = UIColor.red
-            resultsView.isHidden = true
-            self.view.addSubview(resultsView)
+            self.resultsView.isHidden = true
+            self.view.addSubview(self.resultsView)
             //resultsView.backgroundColor = UIColor.yellow
         }
-        /*let translateBtn: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
-        translateBtn.backgroundColor = UIColor.green
-        translateBtn.setTitle("Translate", for: .normal)
-        translateBtn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        translateBtn.tag = 1
-        self.view.addSubview(translateBtn)
-        
-        translateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        translateLabel.center = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2-150)
-        translateLabel.text = "Hornear el pastel 50 minutos en la lata redonda."
-        translateLabel.textColor = UIColor .black
-        translateLabel.isHidden = true
-        self.view.addSubview(translateLabel)
-        
-        let image: UIImage = UIImage(named: "oven")!
-        let imageView = UIImageView(image: image)
-        self.view.addSubview(imageView)
-        imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        imageView.center = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2)
-        self.view.addSubview(imageView)
-        
-        let sentenceLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        sentenceLabel.center = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2+150)
-        sentenceLabel.text = "Bake the cake 50 minutes in the round tin."
-        sentenceLabel.textColor = UIColor .black
-        self.view.addSubview(sentenceLabel)
-        
-        let audioBtn: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
-        audioBtn.backgroundColor = UIColor.green
-        audioBtn.setTitle("Audio", for: .normal)
-        audioBtn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        audioBtn.tag = 2
-        self.view.addSubview(audioBtn)*/
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -196,7 +165,8 @@ class Level4ViewController: UIViewController {
         let btnsendtag: UIButton = sender
 
         if btnsendtag.tag == 2 {
-            
+            self.containerView.isHidden = false
+            self.resultsView.isHidden = false
         } else if btnsendtag.tag == 3 {
             
         }
